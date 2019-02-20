@@ -1,0 +1,22 @@
+section {
+    width: 75%;
+    margin: auto;
+
+    table {
+        width: 100%;
+
+        .with-icon {
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-right: 0.5rem;
+            }
+
+            mat-icon {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+}
