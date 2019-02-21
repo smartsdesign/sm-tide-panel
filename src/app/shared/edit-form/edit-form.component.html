@@ -1,17 +1,20 @@
 <section>
     <header>
-        <h2 mat-dialog-title>Edit account details</h2>
+        <h6 mat-dialog-title>Edit account details</h6>
     </header>
 
     <article>
         <mat-dialog-content [formGroup]="form">
+            <mat-form-field [hidden]="true">
+                <input matInput formControlName="accountId" />
+            </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Firstname" formControlName="firstName" required />
-                <mat-error>required field!</mat-error>
+                <mat-error *ngIf="hasError('firstName', 'required')">Name is required!</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Lastname" formControlName="lastName" required />
-                <mat-error>required field!</mat-error>
+                <mat-error *ngIf="hasError('lastName', 'required')">lastName is required!</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input
@@ -26,12 +29,18 @@
                 />
                 <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="!getBirthYear(dob)">Birth year must be above 1900</mat-error>
             </mat-form-field>
         </mat-dialog-content>
 
         <mat-dialog-actions>
             <button class="mat-raised-button" (click)="close()">Cancel</button>
-            <button class="mat-raised-button mat-primary" (click)="submitUpdate()">Submit</button>
+            <button
+                class="mat-raised-button mat-primary"
+                [disabled]="!form.valid"
+                (click)="submitUpdate()">
+                    Submit
+                </button>
         </mat-dialog-actions>
         <div class="key">
             <span>* Required</span>

@@ -1,24 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 import { MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
+
+import { AccountsService } from '../services/accounts.service';
 
 import { EditFormComponent } from '../shared/edit-form/edit-form.component';
 
 import { IAccount } from '../models/account.interface';
-
 import { custAccounts } from '../data/accounts';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'tide-accounts-list',
     templateUrl: './accounts-list.component.html',
     styleUrls: ['./accounts-list.component.scss'],
 })
-export class AccountsListComponent implements OnInit {
+export class AccountsListComponent implements OnInit, OnDestroy {
 
     public dataSource = new MatTableDataSource<IAccount>(custAccounts);
+    private _unSubscribe: Subject<void> = new Subject();
 
-    constructor(private _dialog: MatDialog) {}
+    constructor(
+        private _accountsService: AccountsService,
+        private _dialog: MatDialog
+    ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        // Accounts data API driven service
+        this._accountsService
+            .getAccounts()
+            .pipe(takeUntil(this._unSubscribe))
+            .subscribe(response => {
+                // we'd replace hard-coded customer accounts data (custAccounts) with API data
+                // subscribing to this `Observable` stream will ensure our UI data updated when
+                // there is a change in the dataSource
+                // this.dataSource = new MatTableDataSource<IAccount>(custAccounts);
+        });
+
+    }
+
+    // let's clean up the suscriptions
+    ngOnDestroy(): void {
+        this._unSubscribe.next();
+        this._unSubscribe.complete();
+    }
 
     public editAccount(custInfo) {
         this._openDialog(custInfo);

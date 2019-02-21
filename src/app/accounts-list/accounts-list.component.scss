@@ -1,21 +1,21 @@
-section {
-    width: 75%;
-    margin: auto;
+:host {
+    display: block;
+    margin-top: 5vh;
 
-    table {
-        width: 100%;
+    section {
+        width: 75%;
+        margin: auto;
 
-        .with-icon {
-            display: flex;
-            align-items: center;
+        table {
+            width: 100%;
 
-            span {
-                margin-right: 0.5rem;
-            }
+            .with-icon {
+                display: flex;
+                align-items: center;
 
-            mat-icon {
-                width: 18px;
-                height: 18px;
+                mat-icon {
+                    width: 14px;
+                }
             }
         }
     }
