@@ -1,4 +1,4 @@
-<section fxLayout="row" fxLayout.xs="column">
+<main role="list" fxLayout="row" fxLayout.xs="column">
     <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- AccountId Column -->
@@ -37,6 +37,6 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="['accountId', 'name', 'dob', 'actions']"></tr>
-        <tr mat-row *matRowDef="let row; columns: [ 'accountId', 'name', 'dob', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['accountId', 'name', 'dob', 'actions']"></tr>
     </table>
-</section>
+</main>

@@ -42,6 +42,20 @@ const custAccounts: IAccount[] = [
         lastName: 'Navatolova',
         dob: new Date(1989, 7, 26),
         action: 'edit'
+    },
+    {
+        accountId: 9327,
+        firstName: 'Marianna',
+        lastName: 'Jockovic',
+        dob: new Date(1962, 7, 26),
+        action: 'edit'
+    },
+    {
+        accountId: 2327,
+        firstName: 'Ivan',
+        lastName: 'Ivanov',
+        dob: new Date(1986, 7, 26),
+        action: 'edit'
     }
 ];
 
