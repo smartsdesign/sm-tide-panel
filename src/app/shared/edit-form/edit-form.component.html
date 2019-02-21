@@ -1,33 +1,40 @@
-<h2 mat-dialog-title>Edit account details</h2>
+<section>
+    <header>
+        <h2 mat-dialog-title>Edit account details</h2>
+    </header>
 
-<mat-dialog-content [formGroup]="form">
-    <mat-form-field>
-        <input matInput placeholder="Firstname" formControlName="firstName" required>
-        <mat-error>required field!</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-            <input matInput placeholder="Lastname" formControlName="lastName" required>
-            <mat-error>required field!</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-            <input
-                matInput
-                [matDatepicker]="picker"
-                placeholder="Choose date of birth"
-                formControlName="dob"
-                id="dateOfBirth"
-                readonly (click)="picker.open()" required>
-                <mat-datepicker-toggle
-                    matSuffix
-                    [for]="picker">
-                </mat-datepicker-toggle>
+    <article>
+        <mat-dialog-content [formGroup]="form">
+            <mat-form-field>
+                <input matInput placeholder="Firstname" formControlName="firstName" required />
+                <mat-error>required field!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Lastname" formControlName="lastName" required />
+                <mat-error>required field!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    matInput
+                    [matDatepicker]="picker"
+                    placeholder="Choose date of birth"
+                    formControlName="dob"
+                    id="dateOfBirth"
+                    readonly
+                    (click)="picker.open()"
+                    required
+                />
+                <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-</mat-dialog-content>
+            </mat-form-field>
+        </mat-dialog-content>
 
-<mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Cancel</button>
-    <button class="mat-raised-button mat-primary" (click)="submitUpdate()">Submit</button>
-</mat-dialog-actions>
-
-<span>* Required</span>
+        <mat-dialog-actions>
+            <button class="mat-raised-button" (click)="close()">Cancel</button>
+            <button class="mat-raised-button mat-primary" (click)="submitUpdate()">Submit</button>
+        </mat-dialog-actions>
+        <div class="key">
+            <span>* Required</span>
+        </div>
+    </article>
+</section>

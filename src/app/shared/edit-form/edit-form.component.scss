@@ -1,0 +1,21 @@
+section {
+
+    header {
+        h2 {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    mat-dialog-actions {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .key {
+        font-size: 0.7rem;
+    }
+}
+
