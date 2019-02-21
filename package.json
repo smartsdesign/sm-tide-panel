@@ -1,9 +1,13 @@
 {
   "name": "tide-accounts",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Samson Muhangi",
+    "email": "samson.biz@gmail.com"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

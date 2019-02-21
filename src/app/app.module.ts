@@ -68,7 +68,8 @@ import { SuccessDialogComponent } from './shared/success-dialog/success-dialog.c
         APIService,
         AccountsService,
         {
-            provide: DateAdapter, useClass: CustomDateAdapter
+            provide: DateAdapter,
+            useClass: CustomDateAdapter
         }
     ],
     bootstrap: [AppComponent],

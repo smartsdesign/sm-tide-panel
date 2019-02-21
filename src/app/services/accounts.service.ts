@@ -7,6 +7,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { APIService } from '../services/api.service';
+
 import { IAccount } from '../models/account.interface';
 
 
@@ -39,7 +40,7 @@ export class AccountsService {
             );
     }
 
-    private _throwErrorMsg(error, custMsg) {
+    private _throwErrorMsg(error: string, custMsg: string) {
         return throwError(error || custMsg);
     }
 }

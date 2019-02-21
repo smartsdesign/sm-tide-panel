@@ -1,3 +1,7 @@
+/**
+ * Mock data
+ */
+
 import { IAccount } from '../models/account.interface';
 
 const custAccounts: IAccount[] = [

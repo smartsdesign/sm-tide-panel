@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { Location } from '@angular/common';
 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -9,6 +8,7 @@ import { Subject } from 'rxjs';
 import { AccountsService } from '../../services/accounts.service';
 
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { IAccount } from 'src/app/models/account.interface';
 
 @Component({
     selector: 'tide-edit-form',
@@ -20,17 +20,18 @@ export class EditFormComponent implements OnInit, OnDestroy {
     public accountId: number;
     public firstName: string;
     public lastName: string;
+    public minDate: Date = new Date('01/01/1900');
+    public maxDate: Date = new Date();
     public dob: Date;
-    private _dialogConfig;
+    private _dialogConfig: object;
     private _unSubscribe: Subject<void> = new Subject();
 
     constructor(
         private _accountsService: AccountsService,
         private _formBuilder: FormBuilder,
         private _dialog: MatDialog,
-        private _location: Location,
         private _dialogRef: MatDialogRef<EditFormComponent>,
-        @Inject(MAT_DIALOG_DATA) data,
+        @Inject(MAT_DIALOG_DATA) data: IAccount,
     ) {
         this.accountId = data.accountId;
         this.firstName = data.firstName;
@@ -81,7 +82,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
                 });
         }
 
-        // temporarily submit handling
+        // temporary form Submit handling
         if (this.form.valid) {
             const dialogRef = this._dialog.open(SuccessDialogComponent, this._dialogConfig);
             dialogRef.afterClosed()
@@ -89,11 +90,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
                     this._dialogRef.close();
                 });
         } else {
-            // error message component goes here.
+            // error message handling.
         }
-    }
-
-    public getBirthYear(dob) {
-        return new Date(dob).getFullYear;
     }
 }

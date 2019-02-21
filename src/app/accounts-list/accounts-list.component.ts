@@ -32,11 +32,11 @@ export class AccountsListComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unSubscribe))
             .subscribe(response => {
                 // we'd replace hard-coded customer accounts data (custAccounts) with API data
-                // subscribing to this `Observable` stream will ensure our UI data updated when
-                // there is a change in the dataSource
+                // subscribing to this `Observable` stream. This will ensure our UI list data updates when
+                // there is a change in the dataSource/database
+
                 // this.dataSource = new MatTableDataSource<IAccount>(custAccounts);
         });
-
     }
 
     // let's clean up the suscriptions

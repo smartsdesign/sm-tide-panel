@@ -1,9 +1,10 @@
 <article role="form">
+
     <header>
         <h6 mat-dialog-title>Edit account details</h6>
     </header>
 
-    <article>
+    <section>
         <mat-dialog-content [formGroup]="form">
             <mat-form-field [hidden]="true">
                 <input matInput formControlName="accountId" />
@@ -20,16 +21,16 @@
                 <input
                     matInput
                     [matDatepicker]="picker"
+                    [min]="minDate"
+                    [max]="maxDate"
                     placeholder="Choose date of birth"
                     formControlName="dob"
                     id="dateOfBirth"
                     readonly
                     (click)="picker.open()"
-                    required
-                />
+                    required />
                 <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <mat-error *ngIf="!getBirthYear(dob)">Birth year must be above 1900</mat-error>
             </mat-form-field>
         </mat-dialog-content>
 
@@ -42,8 +43,11 @@
                     Submit
                 </button>
         </mat-dialog-actions>
+
         <div class="key">
             <span>* Required</span>
         </div>
-    </article>
+
+    </section>
+
 </article>
