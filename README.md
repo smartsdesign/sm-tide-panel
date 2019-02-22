@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Install
 
-- clone repo `git clone `
+- clone repo `git clone https://github.com/smartsdesign/sm-tide-panel.git`
 - `cd` into directory.
 - run `npm install`
 
