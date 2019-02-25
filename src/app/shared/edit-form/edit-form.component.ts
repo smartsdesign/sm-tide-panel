@@ -17,7 +17,7 @@ import { IAccount } from 'src/app/models/account.interface';
 })
 export class EditFormComponent implements OnInit, OnDestroy {
     public form: FormGroup;
-    public accountId: number;
+    public _id: string;
     public firstName: string;
     public lastName: string;
     public minDate: Date = new Date('01/01/1900');
@@ -33,7 +33,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
         private _dialogRef: MatDialogRef<EditFormComponent>,
         @Inject(MAT_DIALOG_DATA) data: IAccount,
     ) {
-        this.accountId = data.accountId;
+        this._id = data._id;
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.dob = data.dob;
@@ -41,7 +41,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.form = this._formBuilder.group({
-            accountId: [this.accountId, []],
+            _id: [this._id, []],
             firstName: [this.firstName, []],
             lastName: [this.lastName, []],
             dob: [this.dob, []],
@@ -71,7 +71,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
 
     public submitUpdate() {
         if (this.form.valid) {
-            // Update the account record using the PUT (/update-account)
+            // Update the account record using the PUT (/account/:id)
             // endpoint
             this._accountsService
                 .updateAccount(this.form.value)
@@ -79,18 +79,24 @@ export class EditFormComponent implements OnInit, OnDestroy {
                 .subscribe(res => {
                     // we'd notify the user here if the update operation was
                     // successful or not, proceed accordingly.
+                    const dialogRef = this._dialog.open(SuccessDialogComponent, this._dialogConfig);
+                    dialogRef.afterClosed()
+                        .subscribe(response => {
+                            this._dialogRef.close();
+                        });
+
                 });
         }
 
         // temporary form Submit handling
-        if (this.form.valid) {
-            const dialogRef = this._dialog.open(SuccessDialogComponent, this._dialogConfig);
-            dialogRef.afterClosed()
-                .subscribe(res => {
-                    this._dialogRef.close();
-                });
-        } else {
-            // error message handling.
-        }
+        // if (this.form.valid) {
+        //     const dialogRef = this._dialog.open(SuccessDialogComponent, this._dialogConfig);
+        //     dialogRef.afterClosed()
+        //         .subscribe(res => {
+        //             this._dialogRef.close();
+        //         });
+        // } else {
+        //     // error message handling.
+        // }
     }
 }

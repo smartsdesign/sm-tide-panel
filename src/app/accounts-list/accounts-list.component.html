@@ -2,9 +2,9 @@
     <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- AccountId Column -->
-        <ng-container matColumnDef="accountId">
+        <ng-container matColumnDef="_id">
             <th mat-header-cell *matHeaderCellDef>Account Id</th>
-            <td mat-cell *matCellDef="let element">{{ element.accountId }}</td>
+            <td mat-cell *matCellDef="let element">{{ element._id }}</td>
         </ng-container>
 
         <!-- Name Column -->
@@ -26,7 +26,7 @@
                 <button
                     mat-flat-button
                     color="accent"
-                    (click)="editAccount({ accountId: element.accountId, firstName: element.firstName, lastName: element.lastName, dob: element.dob })"
+                    (click)="editAccount({ _id: element._id, firstName: element.firstName, lastName: element.lastName, dob: element.dob })"
                 >
                     <div class="with-icon">
                         <span>Edit </span>
@@ -36,7 +36,7 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="['accountId', 'name', 'dob', 'actions']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['accountId', 'name', 'dob', 'actions']"></tr>
+        <tr mat-header-row *matHeaderRowDef="['_id', 'name', 'dob', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['_id', 'name', 'dob', 'actions']"></tr>
     </table>
 </main>

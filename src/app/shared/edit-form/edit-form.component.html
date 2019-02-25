@@ -7,15 +7,15 @@
     <section>
         <mat-dialog-content [formGroup]="form">
             <mat-form-field [hidden]="true">
-                <input matInput formControlName="accountId" />
+                <input matInput formControlName="_id" />
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Firstname" formControlName="firstName" required />
-                <mat-error *ngIf="hasError('firstName', 'required')">Name is required!</mat-error>
+                <mat-error *ngIf="hasError('firstName', 'required')">Firstname is required!</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Lastname" formControlName="lastName" required />
-                <mat-error *ngIf="hasError('lastName', 'required')">lastName is required!</mat-error>
+                <mat-error *ngIf="hasError('lastName', 'required')">Lastname is required!</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input

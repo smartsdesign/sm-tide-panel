@@ -20,9 +20,9 @@ export class AccountsService {
     /**
         * {get} Get all accounts
     */
-    public getAccounts(): Observable<IAccount> {
+    public getAccounts(): Observable<IAccount[]> {
         return this._apiService
-            .get<IAccount>('/accounts', {})
+            .get<IAccount[]>('/accounts', {})
             .pipe(
                 catchError(err => this._throwErrorMsg(err, 'Error getting accounts'))
             );
@@ -34,7 +34,7 @@ export class AccountsService {
 
     public updateAccount(customer: IAccount): Observable<IAccount> {
         return this._apiService
-            .put<IAccount>(`/update-customer/${customer.accountId}`, customer, {})
+            .put<IAccount>(`/account/${customer._id}`, customer, {})
             .pipe(
                 catchError(err => this._throwErrorMsg(err, 'Error updating account'))
             );

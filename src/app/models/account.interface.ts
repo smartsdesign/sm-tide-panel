@@ -2,7 +2,7 @@
  * Describes the shape of an account
  */
  export interface IAccount {
-     accountId: number;
+    _id: string;
      firstName: string;
      lastName: string;
      dob: Date;
