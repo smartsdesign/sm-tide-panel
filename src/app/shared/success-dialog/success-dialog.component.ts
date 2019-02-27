@@ -15,4 +15,8 @@ export class SuccessDialogComponent implements OnInit {
     ) {}
 
     ngOnInit() {}
+
+    public refresh(): void {
+        window.location.reload();
+    }
 }
