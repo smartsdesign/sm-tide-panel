@@ -8,7 +8,9 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve -o",
-        "build": "npm version patch && node ./replace.build.js && ng build --configuration production",
+        "build:prod": "npm version patch && node ./replace.build.js && ng build --prod",
+        "build:qa": "npm version patch && node ./replace.build.js && ng build --configuration qa",
+        "build:stage": "npm version patch && node ./replace.build.js && ng build --configuration stage",
         "lint": "ng lint"
     },
     "private": true,
