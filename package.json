@@ -1,6 +1,6 @@
 {
     "name": "tide-accounts",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "author": {
         "name": "Samson Muhangi",
         "email": "samson.biz@gmail.com"
@@ -9,8 +9,8 @@
         "ng": "ng",
         "start": "ng serve -o",
         "build:prod": "npm version patch && node ./replace.build.js && ng build --prod",
-        "build:qa": "npm version patch && node ./replace.build.js && ng build --configuration qa",
-        "build:stage": "npm version patch && node ./replace.build.js && ng build --configuration stage",
+        "build:qa": "npm version patch && node ./replace.build.js && ng build --configuration=qa",
+        "build:stage": "npm version patch && node ./replace.build.js && ng build --configuration=stage",
         "lint": "ng lint"
     },
     "private": true,

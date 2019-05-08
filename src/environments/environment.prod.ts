@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
     API_URL: 'https://prod-endpoint.com/api',
-    version: '1.0.6',
+    version: '1.0.7',
 };
