@@ -32,7 +32,6 @@ export class AccountsListComponent implements OnInit, OnDestroy {
             .getAccounts()
             .pipe(takeUntil(this._unSubscribe))
             .subscribe(response => {
-                console.log(response);
                 // we'd replace hard-coded customer accounts data (custAccounts) with API data
                 // subscribing to this `Observable` stream. This will ensure our UI list data updates when
                 // there is a change in the dataSource/database

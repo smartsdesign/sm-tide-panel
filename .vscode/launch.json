@@ -3,12 +3,23 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  "compounds": [
+      {
+          "name": "Launch Angular/Node",
+          "configurations": ["Launch Program", "Launch Chrome with ng serve"]
+      },
+      {
+          "name": "Debug Angular/Node",
+          "configurations": ["Launch Program", "Launch Chrome with ng serve"]
+      }
+  ],
   "configurations": [
+
       {
           "type": "node",
           "request": "launch",
           "name": "Launch Program",
-          "program": "${workspaceFolder}/-o",
+          "program": "${workspaceFolder}",
           "preLaunchTask": "tsc: build - tsconfig.json",
           "outFiles": [
               "${workspaceFolder}/dist/out-tsc/**/*.js"
